@@ -1,0 +1,88 @@
+* {
+  font-size: 25px;
+}
+
+#title {
+  color: green;
+  font-weight: bold ;
+  font-size: 35px;
+  padding: 10px 10px;
+  
+}
+
+#title>i {
+  font-size: 45px;
+  padding: 10px 10px;
+  margin-left: 20px;
+}
+
+#loginbtn {
+  color: green;
+  padding: 10px 30px;
+  font-size: 25px;
+  border: solid 2px;
+  border-radius: 10px;
+  margin-left: 20px;
+  text-align: center;
+}
+
+.menu {
+  color: green;
+  font-weight: bold ;
+  font-size: 35px;
+  padding: 10px 10px;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: rgba(0,0,0,.55);
+  text-decoration: none;
+  transition: color .15s;
+  font-family: 'Jua', sans-serif;
+}
+
+.dropdown-item {
+  color: rgba(0,0,0,.55);
+  font-family: 'Jua', sans-serif;
+  font-size: 21px;
+}
+
+#offcanvasNavbarLabel-expand-md.offcanvas-title.h5 {
+  margin-bottom: 0;
+  line-height: 1.5;
+  color: green;
+  font-weight: bold ;
+  font-size: 40px;
+  padding: 10px 10px;
+}
+
+#offcanvasNavbarLabel-expand-md.offcanvas-title.h5>i {
+  margin-bottom: 0;
+  line-height: 1.5;
+  color: green;
+  font-weight: bold ;
+  font-size: 40px;
+  padding: 10px 10px;
+}
+
+
+.btn-primary {
+  color: #fff;
+  background-color:  green;
+  border-color:  green;
+  font-family: 'Jua', sans-serif;
+  margin-left: 10px;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color:  darkgreen;
+  border-color:  darkgreen;
+  font-family: 'Jua', sans-serif;
+  margin-left: 10px;
+}
+
+.mb-3 {
+  margin-bottom: 0rem!important;
+}
