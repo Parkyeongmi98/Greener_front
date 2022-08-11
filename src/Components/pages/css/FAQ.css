@@ -1,0 +1,35 @@
+.accordion-item {
+    border-color: #8BC34A;
+    border-radius: 10px;
+}
+
+.accordion-button:not(.collapsed) {
+    color: white;
+    background-color: #8BC34A;
+    border-top-right-radius:10px;
+    border-top-left-radius:10px;
+}
+
+.accordion-collapse.collapse.show {
+    background-color: #DCEDC8;
+    color: gray;
+    border-bottom-right-radius:10px;
+    border-bottom-left-radius:10px;
+}
+
+.accordion-button:focus {
+    border-color: #DCEDC8;
+    box-shadow: 0 0 0 0 ;
+    
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url(../../../img/1.svg);
+    transform: rotate(-180deg);
+}
+
+.collapsing {
+    transition: 0.35s;
+    background-color: #DCEDC8;
+    color: gray;
+}

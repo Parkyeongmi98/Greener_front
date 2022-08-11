@@ -7,11 +7,26 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import './Navbarmenu.css'
-import { signout } from "../../service/ApiService";
+import axios from 'axios';
 
 function Navbarmenu() {
 
-  const accessToken = localStorage.getItem("ACCESS_TOKEN");
+  const logout = () => {
+    axios.defaults.headers.common['accessToken'] = `Bearer ${accessToken}`
+    axios.get('/auth/logout')
+      .then(response => {
+        console.log(response);	
+      }).then((response) => {
+        localStorage.removeItem("access");
+        localStorage.removeItem("id");
+        window.location.href = "/login";
+        alert('로그아웃 되었습니다.');
+      }
+      )
+  }
+ 
+
+  const accessToken = localStorage.getItem("access");
 
   return (
     <>
@@ -50,12 +65,12 @@ function Navbarmenu() {
                     <NavDropdown.Item href="#action4">1:1 문의</NavDropdown.Item>
                     <NavDropdown.Item href="/myplants">내 식물</NavDropdown.Item>
                   </NavDropdown>
-                  <Nav.Link href="#">공지사항</Nav.Link>
-                  <Nav.Link href="#">FAQ</Nav.Link><br/>
+                  <Nav.Link href="/plantsnotice">공지사항</Nav.Link>
+                  <Nav.Link href="/faq">FAQ</Nav.Link><br/>
 
-                  {localStorage.ACCESS_TOKEN  === accessToken ? (
+                  {localStorage.access === accessToken ? (
             
-                   <Button onClick={signout}>로그아웃</Button>)  : (
+                   <Button onClick={logout}>로그아웃</Button>)  : (
                    <Nav.Link id="loginbtn" href="/login">로그인</Nav.Link> )}
                    
                 </Nav>

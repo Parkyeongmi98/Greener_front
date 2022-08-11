@@ -1,0 +1,44 @@
+.main {
+    height: 100vh;
+    width: 95vw;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),url('../../../img/myplants6.jpg') ;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    color: white;
+    font-family: 'Poor Story', cursive;
+    position: relative;
+    display : inline-block;
+}
+
+.maintxt {
+    position: absolute; 
+    top: 40%; 
+    left: 30%;
+    padding: 100px 100px;
+    transform: translate( -50%, -50%);
+}
+
+.maintxt > h1 {
+    font-weight: bolder;
+}
+
+.maintxt > h3 {
+    margin-top: 10%;
+    font-family: 'Poor Story', cursive;
+    font-weight: bolder;
+}
+
+#myplantsbtn {
+    position: absolute; 
+    top: 85%; 
+    left: 50%;
+    transform: translate( -50%, -50%);
+    border-width: 2px;
+    border-radius: 30px;
+    font-family: "Jua";
+}
+
