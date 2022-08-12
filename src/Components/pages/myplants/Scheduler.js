@@ -12,7 +12,7 @@ function Scheduler() {
     axios.get('/api/v1/my-plants')
     .then((response) => {
       setData(response.data);
-
+      console.log(response)
     })
     
     
