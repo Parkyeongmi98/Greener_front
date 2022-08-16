@@ -8,6 +8,7 @@ function Market() {
  
   const [data, setData] = useState([]);
   
+  
   useEffect(() => {
     axios.defaults.headers.common['accessToken'] = `Bearer ${localStorage.getItem("access")}`;
     axios.get('/api/v1/boards')
@@ -34,7 +35,6 @@ function Market() {
       <th>내용</th>
       <th>등록자</th>
       <th>등록일</th>
-      <th>#</th>
     </tr>
   </thead>
   <tbody className="table-group-divider">
@@ -43,15 +43,10 @@ function Market() {
 
     <tr key={boardsId}>
       <td>{boardsId + 1}</td>
-      <td >{data.title}</td>
+      <td ><a href={`/marketdetail/${data.boardsId}`} >{data.title}</a></td>
       <td>{data.content}</td>   
       <td>{data.nickName}</td>
-      <td>{data.bornDate}.format('YYYY-MM-DD')</td>
-      <td className="flex justify-center items-center space-x-4 mt-3">
-        <Link to={`/marketdetail/${data.boardsId}`}>view</Link>
-        <button>edit</button>
-        <button>delete</button>
-      </td>
+      <td>{data.bornDate}</td>
     </tr>
   ))}
   </tbody>

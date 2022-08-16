@@ -46,7 +46,7 @@ function Talk() {
       <td >{data.title}</td>
       <td>{data.content}</td>   
       <td>{data.nickName}</td>
-      <td>{data.bornDate}.format('YYYY-MM-DD')</td>
+      <td>{data.bornDate}</td>
       <td className="flex justify-center items-center space-x-4 mt-3">
         <Link to={`/talkdetail/${data.boardsId}`}>view</Link>
         <button>edit</button>
@@ -56,7 +56,7 @@ function Talk() {
   ))}
   </tbody>
 </table>
-<Button id="talkbtn" variant="outline-success" href="talkwrite">&nbsp; 글쓰기 &nbsp;</Button>
+<Button id="talkbtn" variant="outline-success" href="/talkwrite">&nbsp; 글쓰기 &nbsp;</Button>
 
 </>
 

@@ -96,14 +96,14 @@ const MarketWrite = () => {
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
-    const [tempFile, setTempFile] = useState("");
+    const [file, setFile] = useState("");
 
     const onSubmit = async (e) => {
         e.preventDefault();
 
         
         const formData = new FormData();
-        formData.append("file",tempFile[0]);
+        formData.append("file",file[0]);
     
         let dataSet = {
             title,
@@ -142,12 +142,12 @@ const MarketWrite = () => {
           type="text"
           placeholder="내용을 입력하세요"
       /><br/>
-
+      
         <input 
           type="file"
           multiple="multiple"
-          onChange={(e) => {setTempFile(e.target.files)}}
-        /><br/>
+          onChange={(e) => {setFile(e.target.files)}}
+        />
 
         <button type="submit">제출</button>
       </form>

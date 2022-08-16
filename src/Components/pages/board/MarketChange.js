@@ -7,7 +7,7 @@ function MarketChange() {
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
-    const [boardFilesId, setBoardFilesId] = useState("");
+    const [img, setImg] = useState("");
 
     const {boardsId} = useParams();
 
@@ -19,8 +19,8 @@ function MarketChange() {
         .then((response)  => { 
           setTitle(response.data.title);
           setContent(response.data.content);
-          setBoardFilesId(response.data.boardFilesId);
-
+          setImg(response.data.img);
+          console.log(response.data.img)
         })
         
       }, [])
@@ -28,7 +28,7 @@ function MarketChange() {
       const data = {
         title: title,
         content: content,
-        boardfilesid: boardFilesId
+        img: img
     }
 
       function Update(e) {
@@ -59,11 +59,15 @@ return (
         type="text"
         placeholder="내용을 입력하세요"
     /><br/>
-    이미지 <input 
-        value={boardFilesId}
-        onChange={(e)=> {setBoardFilesId(e.target.value)}}
-        type="text"
+    이미지 <img 
+        src={data.img}
+        alt="error"
+        width="20%" height="200px"
+        
         placeholder="이미지를 등록하세요"
+    /><input 
+      type="file"
+      onChange={(e)=> {setImg(e.target.value)}} 
     /><br/>
 
     <button onClick={Update}>수정</button>

@@ -48,8 +48,8 @@ function App() {
         <Route path="/marketchange/:boardsId" element={<MarketChange />} />
         <Route path="/schedulerdetail/:myPlantsId" element={<SchedulerDetail />} />
         <Route path="/talkwrite" element={<TalkWrite />} />
-        <Route path="/talkdetail:boardsId" element={<TalkDetail />} />
-        <Route path="/talkchange:boardsId" element={<TalkChange />} />
+        <Route path="/talkdetail/:boardsId" element={<TalkDetail />} />
+        <Route path="/talkchange/:boardsId" element={<TalkChange />} />
       </Routes>
       </body>
     </>

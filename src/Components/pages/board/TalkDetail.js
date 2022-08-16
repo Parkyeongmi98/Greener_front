@@ -10,7 +10,6 @@ function MarketDetail() {
     const id = localStorage.getItem("id");
     const [data, setData] = useState([]);
     const {boardsId} = useParams();
-    const {filename} = useParams();
 
     useEffect(() => {
        
@@ -26,14 +25,18 @@ function MarketDetail() {
     
     
 
-    function Delete() {
-        axios.defaults.headers.common['accessToken'] = `Bearer ${localStorage.getItem("access")}`;
-        axios.delete(`/api/v1/boards/${boardsId}`)
-        .then(
-          window.location.href = "/talk",
-          alert('삭제 되었습니다.')
-        )
-      }
+      function Delete() {
+        if(window.confirm("정말 삭제하시겠습니까?")) {
+          axios.defaults.headers.common['accessToken'] = `Bearer ${localStorage.getItem("access")}`;
+          axios.delete(`/api/v1/boards/${boardsId}`)
+            .then(
+            window.location.href = "/market",
+            alert('삭제 되었습니다.')
+          )}
+          else {
+            alert("취소합니다.");
+          }
+        }
 
     
 
@@ -47,7 +50,7 @@ function MarketDetail() {
 
                 제목 <input value={data.title}/><br/>
                 내용 <input value={data.content}/><br/>
-                이미지 <img src={data.boardFilesId + `/${filename}.jpg`} alt={data.fileName} width="20%" height="200px"/><br/>
+                이미지 <img src={data.img} alt={data.fileName} width="20%" height="200px"/><br/>
                 등록자 <input value={data.nickName}/><br/>
                 등록일 <input value={data.createDate}/><br/>
                 
