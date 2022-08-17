@@ -7,7 +7,7 @@ function TalkChange() {
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
-    const [boardFilesId, setBoardFilesId] = useState("");
+    const [img, setImg] = useState("");
 
     const {boardsId} = useParams();
 
@@ -19,7 +19,7 @@ function TalkChange() {
         .then((response)  => { 
           setTitle(response.data.title);
           setContent(response.data.content);
-          setBoardFilesId(response.data.boardFilesId);
+          setImg(response.data.img);
 
         })
         
@@ -28,7 +28,7 @@ function TalkChange() {
       const data = {
         title: title,
         content: content,
-        boardfilesid: boardFilesId
+        img: img
     }
 
       function Update(e) {
@@ -59,15 +59,16 @@ return (
         type="text"
         placeholder="내용을 입력하세요"
     /><br/>
-    이미지 <input 
-        value={boardFilesId}
-        onChange={(e)=> {setBoardFilesId(e.target.value)}}
-        type="text"
+    이미지 <img 
+        src={img}
+        alt="error"
+        width="20%" height="200px"
+        
         placeholder="이미지를 등록하세요"
     /><br/>
 
-    <button onClick={Update}>수정</button>
-
+    <Button href={`/talkdetail/${boardsId}`} variant="outline-secondary">&nbsp; 취소 &nbsp;</Button>
+    <Button onClick={Update} variant="outline-success">&nbsp; 수정 &nbsp;</Button>
     </form>
     </>
     )

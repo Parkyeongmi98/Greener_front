@@ -10,6 +10,7 @@ function MarketDetail() {
     const id = localStorage.getItem("id");
     const [data, setData] = useState([]);
     const {boardsId} = useParams();
+    console.log(id)
 
 
     useEffect(() => {
@@ -47,20 +48,19 @@ function MarketDetail() {
 
             <>
             <div className="dataform">
-
-
                 제목 <input value={data.title}/><br/>
                 내용 <input value={data.content}/><br/>
                 이미지 <img src={data.img} alt={data.fileName} width="20%" height="200px"/><br/>
                 등록자 <input value={data.nickName}/><br/>
                 등록일 <input value={data.createDate}/><br/>
-                
-
             </div>
-            
-            <Link to={`/marketchange/${boardsId}`}>&nbsp; 수정 &nbsp;</Link>
-            <Button onClick={() => Delete(data.boardsId)} variant="danger">&nbsp; 삭제 &nbsp;</Button> 
-          
+            <Button href="/market" variant="outline-secondary">뒤로가기</Button>
+            {data.userId == id && (
+            <>
+            <Button href={`/marketchange/${boardsId}`} variant="outline-success">&nbsp; 수정 &nbsp;</Button>
+            <Button onClick={() => Delete(data.boardsId)} variant="outline-danger">&nbsp; 삭제 &nbsp;</Button>
+            </>
+            )}
             </>         
             
 

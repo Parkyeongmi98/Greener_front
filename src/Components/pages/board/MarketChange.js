@@ -42,10 +42,14 @@ function MarketChange() {
         )
       }
 
+      function FileDelete() {
+        
+      }
+
 
 return (
     <>
-    <h1>글쓰기</h1>
+    <h1>수정하기</h1>
     <form>
     제 목 <input 
         value={title}
@@ -60,17 +64,19 @@ return (
         placeholder="내용을 입력하세요"
     /><br/>
     이미지 <img 
-        src={data.img}
+        src={img}
         alt="error"
         width="20%" height="200px"
-        
         placeholder="이미지를 등록하세요"
-    /><input 
+        onChange={(e)=> {setImg(e.target.value)}}
+    />
+    <button onChange={FileDelete}>삭제</button>
+    <input 
       type="file"
-      onChange={(e)=> {setImg(e.target.value)}} 
+       
     /><br/>
-
-    <button onClick={Update}>수정</button>
+  <Button href={`/marketdetail/${boardsId}`} variant="outline-secondary">&nbsp; 취소 &nbsp;</Button>
+  <Button onClick={Update} variant="outline-success">&nbsp; 수정 &nbsp;</Button>
 
     </form>
     </>

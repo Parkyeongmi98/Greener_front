@@ -56,10 +56,13 @@ function MarketDetail() {
                 
 
             </div>
-            
-            <Link to={`/talkchange/${boardsId}`}>&nbsp; 수정 &nbsp;</Link>
-            <Button onClick={() => Delete(data.boardsId)} variant="danger">&nbsp; 삭제 &nbsp;</Button> 
-          
+                <Button href="/talk" variant="outline-secondary">뒤로가기</Button>
+                {data.userId == id && (
+                <>
+                <Button href={`/talkchange/${boardsId}`} variant="outline-success">&nbsp; 수정 &nbsp;</Button>
+                <Button onClick={() => Delete(data.boardsId)} variant="outline-danger">&nbsp; 삭제 &nbsp;</Button>
+                </>
+                )}
             </>         
             
 

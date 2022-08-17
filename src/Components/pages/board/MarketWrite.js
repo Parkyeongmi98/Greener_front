@@ -97,6 +97,17 @@ const MarketWrite = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [file, setFile] = useState("");
+    
+    const saveFileImage = (e) => {
+      setFile(URL.createObjectURL(e.target.files[0]))
+    }
+
+    const DeleteFileImage = () => {
+      URL.revokeObjectURL(file);
+      setFile("");
+    }
+
+
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -146,8 +157,13 @@ const MarketWrite = () => {
         <input 
           type="file"
           multiple="multiple"
-          onChange={(e) => {setFile(e.target.files)}}
+          // onChange={(e) => {setFile(e.target.files)}}
+          onChange={saveFileImage}
         />
+        <div>
+          {file && ( <img alt="sample" src={file} />)}
+          <button onClick={() => DeleteFileImage()}>삭제</button>
+        </div>
 
         <button type="submit">제출</button>
       </form>
