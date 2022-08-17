@@ -32,7 +32,6 @@ function Market() {
     <tr>
       <th>번호</th>
       <th>제목</th>
-      <th>내용</th>
       <th>등록자</th>
       <th>등록일</th>
     </tr>
@@ -44,7 +43,6 @@ function Market() {
     <tr key={boardsId}>
       <td>{boardsId + 1}</td>
       <td ><a href={`/marketdetail/${data.boardsId}`} >{data.title}</a></td>
-      <td>{data.content}</td>   
       <td>{data.nickName}</td>
       <td>{data.bornDate}</td>
     </tr>

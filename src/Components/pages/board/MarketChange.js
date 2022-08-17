@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Button } from "react-bootstrap";
 
@@ -11,6 +11,17 @@ function MarketChange() {
 
     const {boardsId} = useParams();
 
+    const encodeFileToBase64 = (fileBlob) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(fileBlob);
+      return new Promise((resolve) => {
+        reader.onload = () => {
+          setImg(reader.result);
+          resolve()
+        }
+      })
+    }
+
     useEffect(() => {
        
         axios.defaults.headers.common['accessToken'] = `Bearer ${localStorage.getItem("access")}`;
@@ -20,7 +31,6 @@ function MarketChange() {
           setTitle(response.data.title);
           setContent(response.data.content);
           setImg(response.data.img);
-          console.log(response.data.img)
         })
         
       }, [])
@@ -42,11 +52,6 @@ function MarketChange() {
         )
       }
 
-      function FileDelete() {
-        
-      }
-
-
 return (
     <>
     <h1>수정하기</h1>
@@ -55,28 +60,26 @@ return (
         value={title}
         onChange={(e)=> {setTitle(e.target.value)}}
         type="text"
-        placeholder="제목을 입력하세요"
     /><br/>
     내 용 <input 
         value={content}
         onChange={(e)=> {setContent(e.target.value)}}
         type="text"
-        placeholder="내용을 입력하세요"
     /><br/>
     이미지 <img 
         src={img}
-        alt="error"
+        alt=""
         width="20%" height="200px"
-        placeholder="이미지를 등록하세요"
-        onChange={(e)=> {setImg(e.target.value)}}
     />
-    <button onChange={FileDelete}>삭제</button>
+
     <input 
-      type="file"
-       
-    /><br/>
-  <Button href={`/marketdetail/${boardsId}`} variant="outline-secondary">&nbsp; 취소 &nbsp;</Button>
-  <Button onClick={Update} variant="outline-success">&nbsp; 수정 &nbsp;</Button>
+          type="file"
+          multiple="multiple"
+          onChange={(e) => {encodeFileToBase64(e.target.files[0])}}
+        /><br/>
+
+    <Button href={`/marketdetail/${boardsId}`} variant="outline-secondary">&nbsp; 취소 &nbsp;</Button>
+    <Button onClick={Update} variant="outline-success">&nbsp; 수정 &nbsp;</Button>
 
     </form>
     </>

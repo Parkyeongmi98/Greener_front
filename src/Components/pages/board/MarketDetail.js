@@ -10,8 +10,6 @@ function MarketDetail() {
     const id = localStorage.getItem("id");
     const [data, setData] = useState([]);
     const {boardsId} = useParams();
-    console.log(id)
-
 
     useEffect(() => {
        
