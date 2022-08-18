@@ -76,6 +76,7 @@ return (
           type="file"
           multiple="multiple"
           onChange={(e) => {encodeFileToBase64(e.target.files[0])}}
+          
         /><br/>
 
     <Button href={`/marketdetail/${boardsId}`} variant="outline-secondary">&nbsp; 취소 &nbsp;</Button>
