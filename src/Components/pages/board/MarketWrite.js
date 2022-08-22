@@ -216,7 +216,7 @@ const MarketWrite = () => {
     
           let dataSet = {
             categoryid: 1,
-            categoryname: "MARKET",
+            
             title,
             content,
           };

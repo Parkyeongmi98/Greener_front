@@ -16,15 +16,20 @@ const Talk = () => {
     const getBoardList = async () => {
       const page_number = searchParams.get("page");
       axios.defaults.headers.common['accessToken'] = `Bearer ${localStorage.getItem("access")}`;
-      const {data} = await axios.get(`/api/v1/boards?page=${page_number}&size=10`)
-      console.log(data.content) 
-      return data.content;
+      const {data} = await axios.get(`/api/v1/boards?page=${page_number}&size=20`)
+      const id = data.content.filter(v => v.categoryId == 2);
+      console.log(id)
+      return id;
     }
     getBoardList().then(result => setBoardList(result));
 
     const getTotalBoard = async () => {
       const {data} = await axios.get("/api/v1/boards");
-      return data.totalElements;
+      const id = data.content.filter(v => v.categoryId == 2);
+      console.log(id)
+      // console.log(data)
+      console.log(id.length)
+      return id.length;
     }
     getTotalBoard().then(result => setPageCount(Math.ceil(result / 10)))
     }, [])
@@ -46,10 +51,10 @@ const Talk = () => {
   </thead>
   <tbody className="table-group-divider">
 
-    {boardList.map((data, boardsId) => (
+    {boardList.map((data) => (
 
-    <tr key={boardsId}>
-      <td>{boardsId + 1}</td>
+    <tr>
+      <td>{data.boardsId}</td>
       <td ><a href={`/talkdetail/${data.boardsId}`} >{data.title}</a></td>
       <td>{data.nickName}</td>
       <td>{data.bornDate}</td>

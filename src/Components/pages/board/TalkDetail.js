@@ -28,7 +28,7 @@ function MarketDetail() {
           axios.defaults.headers.common['accessToken'] = `Bearer ${localStorage.getItem("access")}`;
           axios.delete(`/api/v1/boards/${boardsId}`)
             .then(
-            window.location.href = "/market",
+            window.location.href = "/talk",
             alert('삭제 되었습니다.')
           )}
           else {
