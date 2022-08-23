@@ -28,6 +28,8 @@ function Home() {
           <Button id="mainbtn" variant="outline-secondary" href="/market">바로가기</Button>
           </div>
         </div>
+
+
     </>
 
 

@@ -20,6 +20,7 @@ import SchedulerDetail from "./Components/pages/myplants/SchedulerDetail";
 import TalkDetail from "./Components/pages/board/TalkDetail";
 import TalkWrite from "./Components/pages/board/TalkWrite";
 import TalkChange from "./Components/pages/board/TalkChange";
+import Message from "./Components/pages/Message";
 
 
 
@@ -50,6 +51,7 @@ function App() {
         <Route path="/talkwrite" element={<TalkWrite />} />
         <Route path="/talkdetail/:boardsId" element={<TalkDetail />} />
         <Route path="/talkchange/:boardsId" element={<TalkChange />} />
+        <Route path="/message" element={<Message />} />
       </Routes>
       </body>
     </>

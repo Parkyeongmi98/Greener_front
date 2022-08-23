@@ -66,7 +66,8 @@ function Navbarmenu() {
                     <NavDropdown.Item href="/myplants">내 식물</NavDropdown.Item>
                   </NavDropdown>
                   <Nav.Link href="/plantsnotice">공지사항</Nav.Link>
-                  <Nav.Link href="/faq">FAQ</Nav.Link><br/>
+                  <Nav.Link href="/faq">FAQ</Nav.Link>
+                  <Nav.Link href="/message"><i class="fa-solid fa-robot"></i></Nav.Link><br/>
 
                   {localStorage.access === accessToken ? (
             
