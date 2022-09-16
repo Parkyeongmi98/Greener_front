@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
-import {useCallback, useEffect, useState} from "react";
-import {Button} from "@mui/material";
+import React, {useCallback, useEffect, useState} from "react";
+import {Button} from "react-bootstrap";
 import axios from "axios";
 
 
@@ -11,7 +11,7 @@ const MarketChange = () => {
   const [content, setContent] = useState("");
   const [image, setImage] = useState({
     image_file: "",
-    preview_URL: `/api/v1/boards/${boardsId}/detail/images`});
+    preview_URL: ""});
 
     let inputRef;
 
@@ -41,12 +41,11 @@ const MarketChange = () => {
       setContent(result.content);
       // 이미지는 파일을 불러올 필요가 없이 미리보기 url만 가져온다.
       // 이미지를 선택하지 않고 올리면 db에 저장되어 있는 이미지를 그대로 사용!
-      setImage({...image, preview_URL: `/api/v1/boards/${boardsId}/detail/images`})
+      setImage({...image, preview_URL: result.img})
       console.log(result.img)
       console.log(image)
     });
   }, [])
-
 
   const canSubmit = useCallback(() => {
     return content !== "" && title !== "";
@@ -82,24 +81,24 @@ const MarketChange = () => {
   }, [canSubmit]);
 
   return (
-    <div className="addBoard-wrapper">
-      <div className="addBoard-header">
-        게시물 수정하기 🖊️
-      </div><br/>
-
+    <div style={{marginLeft: "10%", marginRight: "10%", marginTop: "4%", marginBottom: "4%", border: "solid", borderColor: "gray", borderRadius: "20px", fontFamily: "Nanum Gothic Coding", color: "#454545"}}>
       <div className="addBoard-body">
-        <div className="text">
+      <h2 style={{marginTop: "3%", marginLeft: "5%", fontSize: "40px", marginBottom: "3%"}}>🖊️ 게시물 수정페이지 </h2><hr/>
+        <div className="text"
+        style={{fontSize: "25px", marginLeft: "5%"}}>
           제 목 <input
+          style={{width: "80%", height: "80px", marginBottom: "2%", padding: "20px 20px"}}
             onChange={(e) => {setTitle(e.target.value);}}
             className="title"
             value={title}
           /><br/>
-          내 용 <input
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea
+          style={{width: "80%", height: "400px", padding: "20px 20px"}}
             onChange={(e) => {setContent(e.target.value);}}
             className="content"
             value={content}
           />
-        </div>
+        </div><br/>
 
           <input
           type="file"
@@ -108,29 +107,31 @@ const MarketChange = () => {
           ref={(refParam) => (inputRef = refParam)}
           style={{ display: "none" }}
         />
-        <div className="img-wrapper">
-          <img src={image.preview_URL} />
-        </div>
-        <div className="upload-button">
+
           <Button
-            variant="outlined"
-            color="primary"
+            style={{marginLeft: "11.5%", marginBottom: "2%"}}
+            variant="outline-dark"
             onClick={() => inputRef.click()}
           >
             이미지 선택
-          </Button>
-        </div>
+          </Button><br/>
+        
+          <img src={image.preview_URL} style={{marginBottom: "4%", width:"55%", height:"40%", marginLeft: "11.5%" }}/>
+       
       </div>
 
-      <div className="submitButton">
+      <div className="submitButton" style={{marginLeft: "40%", marginBottom: "3%"}}>
         {canSubmit() ? (
+          <>
           <Button
             onClick={handleSubmit}
             className="success-button"
-            variant="outlined"
+            variant="outline-success"
           >
             수정하기
           </Button>
+          <Button href={`/marketdetail/${boardsId}`} variant="outline-secondary">취소</Button>
+          </>
         ) : (
           <Button
             className="disable-button"
@@ -141,7 +142,8 @@ const MarketChange = () => {
           </Button>
         )}
       </div>
-    </div>
+
+  </div>
 
 
     

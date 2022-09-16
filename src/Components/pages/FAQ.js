@@ -1,6 +1,7 @@
 import Accordion from 'react-bootstrap/Accordion';
 import styled from 'styled-components';
 import "./css/FAQ.css";
+import Slider from "../Header/Slider"
 
 function AllCollapseExample() {
     const Style1 = styled.div`
@@ -16,9 +17,10 @@ function AllCollapseExample() {
     
     return (
     <>
-    <Style1>자주하는 질문 <i class="fa-solid fa-person-circle-question" style={{fontSize: "40px"}}></i></Style1>
+    <Slider /><br/>
+    
     <Style2>
-    <Accordion defaultActiveKey="0" flus >
+    <Accordion >
       <Accordion.Item eventKey="0" >
         <Accordion.Header># 식물을 따로 구매하고 싶습니다!</Accordion.Header>
         <Accordion.Body>

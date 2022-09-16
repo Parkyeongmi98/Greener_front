@@ -14,11 +14,6 @@ const Market = () => {
   
   useEffect(() => {
 
-    // axios.defaults.headers.common['accessToken'] = `Bearer ${localStorage.getItem("access")}`;
-    // const {data} = axios.get("/api/v1/boards");
-    // const id = data.content.filter(v => v.categoryId == 1);
-    // console.log(id)
-
     const getBoardList = async () => {
       const page_number = searchParams.get("page");
       axios.defaults.headers.common['accessToken'] = `Bearer ${localStorage.getItem("access")}`;
@@ -43,12 +38,12 @@ const Market = () => {
 
 
   return (
-    <>
+    <div style={{marginLeft: "2%", marginRight: "2%"}}>
     <CommunityTab />
     
     
-    <table className="table">
-  <thead>
+  <table className="table" style={{textAlign: "center"}}>
+  <thead >
     <tr>
       <th>번호</th>
       <th>제목</th>
@@ -62,7 +57,7 @@ const Market = () => {
 
     <tr>
       <td>{data.boardsId}</td>
-      <td ><a href={`/marketdetail/${data.boardsId}`} >{data.title}</a></td>
+      <td ><a href={`/marketdetail/${data.boardsId}`} style={{textDecoration: "none", color: "black"}}>{data.title}</a></td>
       <td>{data.nickName}</td>
       <td>{data.bornDate}</td>
     </tr>
@@ -72,6 +67,7 @@ const Market = () => {
 
 <div className="boardList-footer">
   <Pagination
+    style={{marginLeft: "42%", marginTop: "5%"}}
     variant="outlined" color="primary" page={Number(searchParams.get("page"))+1}
       count={pageCount} size="large"
       onChange={(e, value) => {
@@ -83,9 +79,9 @@ const Market = () => {
     />
   </div>
 
-<Button id="marketbtn" variant="outline-success" href="/marketwrite">&nbsp; 글쓰기 &nbsp;</Button>
+<Button id="marketbtn" variant="outline-success" href="/marketwrite" style={{marginLeft: "3%", marginTop: "1%", marginBottom: "5%"}}>&nbsp; 글쓰기 &nbsp;</Button>
 
-</>
+</div>
 
 
 )

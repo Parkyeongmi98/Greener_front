@@ -42,7 +42,7 @@ export function call(api, method, request) {
     )
     .catch((error) => {
       // 추가된 부분
-      if (error.status === 403) {
+      if (error.status === 400) {
         // window.location.href = "/login"; // redirect
       }
       return Promise.reject(error);
@@ -66,6 +66,8 @@ export function login(userDto) {
       // token이 존재하는 경우 Todo 화면으로 리디렉트
       window.location.href = "/";
       alert('로그인 되었습니다.')
+    } else {
+      alert('로그인 실패하였습니다.')
     }
   });
 }

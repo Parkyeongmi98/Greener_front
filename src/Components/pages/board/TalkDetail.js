@@ -39,26 +39,30 @@ function MarketDetail() {
     
 
     return (
+      <div style={{marginLeft: "10%", marginRight: "10%", marginTop: "4%", marginBottom: "4%", border: "solid", borderColor: "gray", borderRadius: "20px", fontFamily: "Nanum Gothic Coding", color: "#454545"}}>       
         <div className="w-full h-full flex justify-center items-center">
+        <h2 style={{marginTop: "3%", marginLeft: "5%", fontSize: "40px", marginBottom: "3%"}}>🖊️ 게시물 상세페이지 </h2><hr/>
         {data && (
-
+          
             <>
-            <div className="dataform">
-
-
-                제목 <input value={data.title}/><br/>
-                내용 <input value={data.content}/><br/>
-                이미지 <img src={data.img} alt={data.fileName} width="20%" height="200px"/><br/>
-                등록자 <input value={data.nickName}/><br/>
-                등록일 <input value={data.createDate}/><br/>
-                
-
+            <div className="dataform"
+            style={{fontSize: "25px", marginLeft: "5%", marginBottom: "3%"}}>
+                제 목 &nbsp;<input value={data.title}
+                style={{width: "80%", height: "80px", marginBottom: "2%", padding: "20px 20px"}}/><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea value={data.content}
+                style={{width: "80%", height: "400px", marginBottom: "2%", padding: "20px 20px"}}/><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src={data.img} alt={data.fileName} style={{marginBottom: "2%", width:"50%", height:"40%" }}/><br/><br/>
+                등록자 &nbsp;<input value={data.nickName}
+                style={{width: "80%", height: "80px", marginBottom: "2%", padding: "20px 20px"}}/><br/>
+                등록일 &nbsp;<input value={data.createDate}
+                style={{width: "80%", height: "80px", marginBottom: "2%", padding: "20px 20px"}}/><br/>
             </div>
-                <Button href="/talk" variant="outline-secondary">뒤로가기</Button>
+                <Button href="/talk" variant="outline-secondary"
+                style={{marginLeft: "5%", marginBottom: "3%"}}>뒤로가기</Button>
                 {data.userId == id && (
                 <>
-                <Button href={`/talkchange/${boardsId}`} variant="outline-success">&nbsp; 수정 &nbsp;</Button>
-                <Button onClick={() => Delete(data.boardsId)} variant="outline-danger">&nbsp; 삭제 &nbsp;</Button>
+                <Button href={`/talkchange/${boardsId}`} variant="outline-success" style={{marginBottom: "3%"}}>&nbsp; 수정 &nbsp;</Button>
+                <Button onClick={() => Delete(data.boardsId)} variant="outline-danger" style={{marginBottom: "3%"}}>&nbsp; 삭제 &nbsp;</Button>
                 </>
                 )}
             </>         
@@ -67,6 +71,7 @@ function MarketDetail() {
             )
         }
         </div>
+      </div>
         
     )
 }

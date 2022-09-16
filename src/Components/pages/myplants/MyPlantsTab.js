@@ -28,7 +28,7 @@ function MyplantsTab() {
       <Navbar>
         <Nav variant="tabs" >
           <Nav.Item>
-            <Nav.Link href="/scheduler">스케줄러</Nav.Link>
+            <Nav.Link href="/myplantslist">내 식물</Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link href="/planner">달력</Nav.Link>

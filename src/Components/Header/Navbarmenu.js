@@ -47,8 +47,13 @@ function Navbarmenu() {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="#action1">식물추천</Nav.Link>
-                  <Nav.Link href="#">식물호텔</Nav.Link>
+                  <NavDropdown                     
+                    title="검색"
+                    id={`offcanvasNavbarDropdown-expand-${expand}`}
+                  >
+                    <NavDropdown.Item href="/plantsinfo">식물검색</NavDropdown.Item>
+                    <NavDropdown.Item href="/map">수목원검색</NavDropdown.Item>
+                  </NavDropdown>
                   <NavDropdown
                     title="커뮤니티"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
@@ -62,12 +67,10 @@ function Navbarmenu() {
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                   >
                     <NavDropdown.Item href="#action3">회원정보 조회</NavDropdown.Item>
-                    <NavDropdown.Item href="#action4">1:1 문의</NavDropdown.Item>
                     <NavDropdown.Item href="/myplants">내 식물</NavDropdown.Item>
                   </NavDropdown>
-                  <Nav.Link href="/plantsnotice">공지사항</Nav.Link>
+                  {/* <Nav.Link href="/plantsnotice">공지사항</Nav.Link> */}
                   <Nav.Link href="/faq">FAQ</Nav.Link>
-                  <Nav.Link href="/message"><i class="fa-solid fa-robot"></i></Nav.Link><br/>
 
                   {localStorage.access === accessToken ? (
             

@@ -1,71 +1,3 @@
-// import React, { useState } from "react";
-// import axios from "axios";
-
-// const TalkWrite = () => {
-
-//     const [title, setTitle] = useState("");
-//     const [content, setContent] = useState("");
-//     const [tempFile, setTempFile] = useState("");
-
-//     const onSubmit = async (e) => {
-//         e.preventDefault();
-
-        
-//         const formData = new FormData();
-//         formData.append("file",tempFile[0]);
-    
-//         let dataSet = {
-//             title,
-//             content,
-//         };
-      
-//       const json = JSON.stringify(dataSet)
-//       const blob = new Blob([json], { type: "application/json" });
-//       formData.append("request", blob); 
-
-
-//       axios.defaults.headers.common['accessToken'] = `Bearer ${localStorage.getItem("access")}`;
-//       axios.post("/api/v1/boards", formData, {
-//             headers: {
-//             "Content-Type": "multipart/form-data", 
-//         }})
-//         .then((response) => {
-//             console.log(response)
-//             window.location.href = "/market";
-//             alert('등록되었습니다.')}
-//         );
-//     }
-      
-      
-//     return (
-//       <form onSubmit={onSubmit}>
-//           제 목 <input 
-//           value={title}
-//           onChange={(e)=> {setTitle(e.target.value)}}
-//           type="text"
-//           placeholder="제목을 입력하세요"
-//       /><br/>
-//       내 용 <input 
-//           value={content}
-//           onChange={(e)=> {setContent(e.target.value)}}
-//           type="text"
-//           placeholder="내용을 입력하세요"
-//       /><br/>
-
-//         <input 
-//           type="file"
-//           multiple="multiple"
-//           onChange={(e) => {setTempFile(e.target.files)}}
-//         /><br/>
-
-//         <button type="submit">제출</button>
-//       </form>
-//   );
-// }
-
-// export default TalkWrite;
-
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Button } from "react-bootstrap";
@@ -76,7 +8,7 @@ const TalkWrite = () => {
     const [content, setContent] = useState("");
     const [img, setImg] = useState({
       image_file: "",
-      preview_URL: "img/default_image.png"
+      preview_URL: "/img/default_image.png"
     });
 
     const saveImage = (e) => {
@@ -97,7 +29,7 @@ const TalkWrite = () => {
       URL.revokeObjectURL(img.preview_URL);
       setImg({
         image_file: "",
-        preview_URL: "img/default_image.png"
+        preview_URL: "/img/default_image.png"
       })
     }
 
@@ -129,24 +61,25 @@ const TalkWrite = () => {
               "Content-Type": "multipart/form-data", 
           }})
 
-              window.location.href = "/market";
+              window.location.href = "/talk";
               alert('등록되었습니다.');
-            // setImg({
-            //   image_file: "",
-            //   preview_URL: "img/default_image.png"
-            // });
+
       
     }
    
     return (
-      <form >
-          제 목 <input 
+      <div style={{marginLeft: "10%", marginRight: "10%", marginTop: "4%", marginBottom: "4%", border: "solid", borderColor: "gray", borderRadius: "20px", fontFamily: "Nanum Gothic Coding", color: "#454545"}}>
+      <h2 style={{marginTop: "3%", marginLeft: "5%", fontSize: "40px", marginBottom: "3%"}}>🖊️ 게시물 작성하기 </h2><hr/>
+      <form style={{fontSize: "25px", marginLeft: "5%", marginBottom: "3%"}}>
+          제 목 &nbsp;<input 
+          style={{width: "80%", height: "80px", marginBottom: "2%", padding: "20px 20px"}}
           value={title}
           onChange={(e)=> {setTitle(e.target.value)}}
           type="text"
           placeholder="제목을 입력하세요"
       /><br/>
-      내 용 <input 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea
+          style={{width: "80%", height: "300px", marginBottom: "2%", padding: "20px 20px"}}
           value={content}
           onChange={(e)=> {setContent(e.target.value)}}
           type="text"
@@ -154,24 +87,30 @@ const TalkWrite = () => {
       /><br/>
       
         <input 
+          style={{marginBottom: "2%", marginLeft: "7%"}}
           type="file"
           accept="image/*"
           onChange={saveImage}
           onClick={(e) => e.target.value = null}
         />
 
-        <div>
-          <img src={img.preview_URL} width="20%" height="200px" />
+        <div style={{marginBottom: "2%", marginLeft: "7%"}}>
+          <img src={img.preview_URL} style={{marginBottom: "2%", width:"40%", height:"30%" }}/>
           <Button color="error" variant="contained" onClick={deleteImage}>
             <i class="fa-solid fa-xmark"></i>
           </Button>
         </div>
 
-        <Button color="success" variant="contained" onClick={onSubmit}>
+
+        <Button variant="outline-success" onClick={onSubmit} style={{width:"110px", height:"60px", fontSize: "25px", marginLeft: "36%"}}>
           제출
+        </Button>
+        <Button variant="outline-secondary" href="/talk" style={{width:"110px", height:"60px", fontSize: "25px", marginLeft: "2%"}}>
+          취소
         </Button>
 
       </form>
+      </div>
   );
 }
 
