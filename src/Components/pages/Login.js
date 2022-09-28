@@ -87,6 +87,7 @@ import React from "react";
 import { login } from "../../service/ApiService";
 import {Link, Button, TextField, Grid, Container, Typography} from "@material-ui/core";
 
+
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -103,7 +104,17 @@ class Login extends React.Component {
   }
 
   render() {
-
+    const KAKAO_REST_API_KEY = ""
+    const KAKAO_REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback"
+    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_REST_API_KEY}&redirect_uri=${KAKAO_REDIRECT_URI}&response_type=code`;
+    
+    const NAVER_REST_API_KEY = ""
+    const NAVER_REDIRECT_URI = "http://localhost:3000/oauth/naver/callback"
+    const NAVER_AUTH_URL = `https://nid.naver.com/oauth2.0/authorize?client_id=${NAVER_REST_API_KEY}&redirect_uri=${NAVER_REDIRECT_URI}&response_type=token&state=state`
+    
+    const KakaoLogin = () => {
+      window.location.href = KAKAO_AUTH_URL
+    }
 
     const NaverLogin = () => {
       window.location.href = NAVER_AUTH_URL
@@ -161,9 +172,9 @@ class Login extends React.Component {
             </Link>
           </Grid>
         </form>
-        <div style={{marginTop: "10%", marginLeft: "10%"}}>
-        <img src="/img/kakao.png" style={{width: "90px", height: "70px", border:"none", background: "none"}} onClick={KakaoLogin} />
-        <img src="/img/naver.png" style={{width: "90px", height: "70px", marginLeft: "10%"}} onClick={NaverLogin}/>
+        <div style={{marginTop: "10%", marginLeft: "20%"}}>
+        <img src="/img/kakao.png" style={{width: "70px", height: "60px", border:"none", background: "none"}} onClick={KakaoLogin} />
+        <img src="/img/naver.png" style={{width: "70px", height: "60px", marginLeft: "20%"}} onClick={NaverLogin}/>
         </div>
       </Container>
     );

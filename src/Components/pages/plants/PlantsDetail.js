@@ -40,7 +40,6 @@ function PlantsDetail() {
 
         {plants &&(
         <div className="dataform" style={{fontSize: "25px", marginLeft: "4%"}}>
-            {/* <img src={plants.imgUrl} alt={plants.fileName} style={{width: "400px", height: "400px", marginBottom: "30px"}}/><br/> */}
             <div style={{display: "flex"}}><h5 style={{marginTop: "25px", fontSize: "25px"}}>이 름 &nbsp;</h5><input value={plants.name} style={{width: "90%", height: "80px", marginBottom: "2%", padding: "20px 20px"}}/></div>
             <div style={{display: "flex"}}><h5 style={{marginTop: "30px", fontSize: "25px"}}>장 소 &nbsp;</h5><textarea value={plants.place} style={{width: "90%", height: "100px", marginBottom: "2%", padding: "20px 20px"}}/></div>
             <div style={{display: "flex"}}><h5 style={{marginTop: "55px", fontSize: "25px"}}>햇 빛 &nbsp;</h5><textarea value={plants.sunshine} style={{width: "90%", height: "150px", marginBottom: "2%", padding: "20px 20px"}}/></div>

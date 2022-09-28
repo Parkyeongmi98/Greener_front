@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { useParams } from 'react-router-dom';
-import { Comment, Avatar, Input} from 'antd';
+import { Comment, Input} from 'antd';
 import axios from "axios";
 import { Button } from 'react-bootstrap'
 import "../css/Detail.css"

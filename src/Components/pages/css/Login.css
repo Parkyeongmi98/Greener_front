@@ -1,0 +1,24 @@
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: black
+}
+
+.MuiTouchRipple-root {
+    color: #fff;
+    background-color: green;
+}
+
+.MuiButton-containedPrimary:hover {
+    background-color: green;
+}
+
+.MuiTypography-colorPrimary {
+    color: black;
+}
+
+a:hover {
+    color: black;
+}
+
+.MuiLink-underlineHover:hover {
+    text-decoration: none;
+}

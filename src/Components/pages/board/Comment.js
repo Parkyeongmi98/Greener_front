@@ -1,88 +1,3 @@
-// import { PropaneSharp } from '@mui/icons-material'
-// import axios from 'axios'
-// import React, { useState } from 'react'
-// import { Button } from 'react-bootstrap'
-// import { useParams } from 'react-router-dom'
-// import ReplyComment from './ReplyComment'
-// import SigleComment from './SigleComment'
-
-// function Comment(props) {
-
-//     const [commentValue, setCommentValue] = useState("")
-//     const boards_Id = useParams().boardsId
-//     const members_Id = localStorage.getItem("id");
-
-//     const handleClick = (e) => {
-//         setCommentValue(e.currentTarget.value)
-//     }
-
-//     const onSubmit = (e) => {
-//         e.preventDefault();
-
-//         const data = {
-//             "content" : commentValue,
-//             "boardsid" : boards_Id,
-//             "membersid" : members_Id
-//         }
-
-//         axios.defaults.headers.common['accessToken'] = `Bearer ${localStorage.getItem("access")}`;
-//         axios.post("/api/v1/comments", data)
-//         .then(response => {
-
-//             if(response.data){
-//                 alert("등록되었습니다.")
-//                 console.log(response)
-
-//                 props.refreshFunction(response.data.result)
-//             }else {
-//                 alert("오류발생")
-//             }
-//         })
-//     }
-
-//     return (
-//         <><br/>
-//             <div>
-//                 <p>댓글</p>
-//                 <hr/>
-
-//                 <form style={{display: 'flex'}} onSubmit={onSubmit} >
-//                     <textarea
-//                         style={{width: "100%", borderRadius: "5px"}}
-//                         onChange={handleClick}
-//                         value={commentValue}
-//                         placeholder="댓글을 입력해주세요."
-
-//                     />
-//                     <br/>
-//                     <Button onClick={onSubmit} variant="secondary">입력</Button>
-
-//                 </form>
-//                 {/* Comment List*/}
-
-//                 {props.commentLists && props.commentLists.map((comment, index) => (
-//                         (!comment.parentCommentsId && 
-//                             <div>
-//                                 <SigleComment  refreshFunction={props.refreshFunction} comment={comment} /> 
-//                                 <ReplyComment commentLists={props.commentLists}/>
-//                             </div>
-//                             )
-                         
-//                 )
-//                 )}
-
-
-//                 {/* Root Comment Form */}
-
-
-
-//             </div>
-//         </>
-//     )
-// }
-
-// export default Comment
-
 import axios from 'axios'
 import React, { useState } from 'react'
 import { Button } from 'react-bootstrap'
@@ -120,7 +35,7 @@ function Comment(props) {
                 setCommentValue("")
                 props.refreshFunction(response.data)
 
-                // window.location.href = `/marketdetail/${boardsId}`;
+                window.location.href = `/marketdetail/${boardsId}`;
             }else {
                 alert("오류발생")
             }

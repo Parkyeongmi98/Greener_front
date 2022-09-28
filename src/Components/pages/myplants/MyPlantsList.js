@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import MyplantsTab from "./MyPlantsTab";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import { Button } from "react-bootstrap";
 
 const MyPlantsList = () => {
   
